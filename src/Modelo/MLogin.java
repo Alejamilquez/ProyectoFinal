@@ -4,12 +4,12 @@ import Vista.Login;
 import Vista.VentanaInicio;
 import javax.swing.JOptionPane;
 
-public class MLogin {
+public class MLogin{
 
     private Login login;
     //private Login login;
-    String Usuario = "Administrador";
-    String Contraseña = "123456";
+    String Usuario = "Ad";
+    String Contraseña = "1";
 
     public MLogin(Login login) {
         this.login = login;
