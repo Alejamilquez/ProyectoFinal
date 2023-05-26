@@ -18,6 +18,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         ImageIcon image = new ImageIcon("im.png");
         setIconImage(image.getImage());
         setLocationRelativeTo(null );
+        Cargar_Tabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -27,7 +28,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        Btn_Cargar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -48,15 +48,16 @@ public class VentanaInicio extends javax.swing.JFrame {
             new String [] {
                 "Codigo", "Nombre", "Marca", "Cantidad", "Precio"
             }
-        ));
-        jScrollPane1.setViewportView(Tabla);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        Btn_Cargar.setText("Cargar");
-        Btn_Cargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_CargarActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane1.setViewportView(Tabla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,21 +65,15 @@ public class VentanaInicio extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(Btn_Cargar)
-                        .addGap(228, 228, 228))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Btn_Cargar))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(229, 232, 232));
@@ -182,10 +177,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void Btn_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CargarActionPerformed
-        //Cargar_Tabla();
-    }//GEN-LAST:event_Btn_CargarActionPerformed
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -220,7 +211,6 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton Btn_Cargar;
     public javax.swing.JButton Btn_Nuevo;
     public javax.swing.JButton Btn_Salir;
     public javax.swing.JTable Tabla;

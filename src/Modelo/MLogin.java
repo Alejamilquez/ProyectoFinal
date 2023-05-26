@@ -1,32 +1,19 @@
 package Modelo;
 
-import Vista.Login;
-import Vista.VentanaInicio;
-import javax.swing.JOptionPane;
+public class MLogin {
 
-public class MLogin{
+    //String Usuario = "Ad";
+    //String Contraseña = "1";
+    String CampoU;
+    char[] CampoC;
+  
 
-    private Login login;
-    //private Login login;
-    String Usuario = "Ad";
-    String Contraseña = "1";
-
-    public MLogin(Login login) {
-        this.login = login;
+    public void setCampoU(String CampoU) {
+        this.CampoU = CampoU;
     }
 
-
-    public void Comprobar() {
-
-        String Pass = new String(login.CampoContraseña.getPassword());
-        String Us = new String(login.CampoUsuario.getText());
-
-        if (Us.equals(Usuario) && Pass.equals(Contraseña)) {
-            VentanaInicio ventana1 = new VentanaInicio();
-            ventana1.setVisible(true);
-            login.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contaseña incorrecto");
-        }
+    public void setCampoC(char[] CampoC) {
+        this.CampoC = CampoC;
     }
+    
 }
