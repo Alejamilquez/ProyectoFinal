@@ -268,7 +268,7 @@ public final class VentanaInicio extends javax.swing.JFrame {
             
             PreparedStatement ps = null;
             ResultSet rs = null;
-            Conexion conn = new Conexion();
+            Conexion conn = Conexion.getInstance();
             Connection con = conn.conectar();
             
             //Selecciona columnas y la tabla de la base de datos

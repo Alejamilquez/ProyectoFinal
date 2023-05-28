@@ -13,8 +13,8 @@ public class LoginDAO {
     }
     
     
-    String Usuario = "Ad";
-    String Contraseña = "1";
+    String Usuario = "Administrador";
+    String Contraseña = "12345";
     
     public int Comprobar(){
         

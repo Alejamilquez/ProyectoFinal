@@ -1,6 +1,7 @@
 
 package DAO;
 
+import Modelo.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.*;
 import Modelo.MInventario;
@@ -10,8 +11,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
-public class InventarioDao extends Modelo.Conexion{
-    Connection con = conectar();
+public class InventarioDao{
+    Conexion c = Conexion.getInstance();
+    Connection con = c.conectar();
     
     //INSERTAR
     public boolean Insertar(MInventario Inv) {

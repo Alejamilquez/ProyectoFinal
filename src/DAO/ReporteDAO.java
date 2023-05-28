@@ -8,9 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 
-public class ReporteDAO extends Conexion {
+public class ReporteDAO{
 
     private MReporte m;
 
@@ -19,6 +20,8 @@ public class ReporteDAO extends Conexion {
     FileOutputStream salida;
     ArrayList<String> datos = new ArrayList<>();
     StringBuilder linea = new StringBuilder(); //es una varibla tipo String la cual es posible modificar
+    Conexion c = Conexion.getInstance();
+    Connection con = c.conectar();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
     public void reporte() {
@@ -28,7 +31,7 @@ public class ReporteDAO extends Conexion {
         datos.add(k);
         
         try {
-            PreparedStatement ps = conectar().prepareCall(sql);
+            PreparedStatement ps = con.prepareCall(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

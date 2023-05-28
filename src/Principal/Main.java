@@ -15,7 +15,7 @@ public class Main {
         Login c = new Login();
         LoginDAO b = new LoginDAO(c);
         CLogin d = new CLogin(a,b,c);
-        Conexion e = new Conexion();
+        Conexion e = Conexion.getInstance();
         VentanaInicio f = new VentanaInicio();
         
         

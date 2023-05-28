@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class BuscarDAO {
     
     private VentanaInicio VI;
+    Conexion c = Conexion.getInstance();
 
     public BuscarDAO(VentanaInicio VI) {
         this.VI = VI;
@@ -27,8 +28,7 @@ public class BuscarDAO {
 
             PreparedStatement ps = null;
             ResultSet rs = null;
-            Conexion conn = new Conexion();
-            Connection con = conn.conectar();
+            Connection con = c.conectar();
 
             //Busca columnas y la tabla de la base de datos
             String cadenaCompleta = "SELECT * FROM inventario where Codigo like'" + "%" + cadena + "%'";
