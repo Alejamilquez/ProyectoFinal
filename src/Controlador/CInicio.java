@@ -2,7 +2,10 @@
 package Controlador;
 
 import DAO.InventarioDao;
+<<<<<<< HEAD
 import DAO.ReporteDAO;
+=======
+>>>>>>> 06bf1c20c3c8122df08adb304abb66d5b14c4423
 import Vista.VentanaInicio;
 import Vista.VentanaModificar;
 import Vista.VentanaNuevo;
@@ -27,19 +30,25 @@ public class CInicio implements ActionListener{
         this.VI.Btn_Eliminar.addActionListener(this);
         this.VI.Btn_Modificar.addActionListener(this);
         this.VI.Btn_Salir.addActionListener(this);
+<<<<<<< HEAD
         this.VI.Btn_Reporte.addActionListener(this);
+=======
+>>>>>>> 06bf1c20c3c8122df08adb304abb66d5b14c4423
     }
 
     
 
     @Override
     public void actionPerformed(ActionEvent evt) {
+<<<<<<< HEAD
         
         if(evt.getSource().equals(VI.Btn_Reporte)){
             ReporteDAO rdao = new ReporteDAO();
             rdao.reporte();
         }
         
+=======
+>>>>>>> 06bf1c20c3c8122df08adb304abb66d5b14c4423
         if (evt.getSource().equals(VI.Btn_Nuevo)) {
             VN.setVisible(true);
             VI.dispose();

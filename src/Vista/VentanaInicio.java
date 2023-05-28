@@ -213,6 +213,11 @@ public final class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_NuevoActionPerformed
 
 
+    private void Btn_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_NuevoActionPerformed
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -247,13 +252,20 @@ public final class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     public javax.swing.JButton Btn_Buscar;
+=======
+>>>>>>> 06bf1c20c3c8122df08adb304abb66d5b14c4423
     public javax.swing.JButton Btn_Eliminar;
     public javax.swing.JButton Btn_Modificar;
     public javax.swing.JButton Btn_Nuevo;
     public javax.swing.JButton Btn_Reporte;
     public javax.swing.JButton Btn_Salir;
     public javax.swing.JTable Tabla;
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton jButton1;
+>>>>>>> 06bf1c20c3c8122df08adb304abb66d5b14c4423
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
