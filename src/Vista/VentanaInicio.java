@@ -9,16 +9,32 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
+import Controlador.CInicio;
+import Controlador.CNuevo;
+import Modelo.MInventario;
+import DAO.InventarioDao;
+import Controlador.CModificar;
 
-public class VentanaInicio extends javax.swing.JFrame {
-    
+public final class VentanaInicio extends javax.swing.JFrame {
+        VentanaNuevo VN = new VentanaNuevo();
+        VentanaModificar VM = new VentanaModificar();
+        MInventario MI = new MInventario();
+        InventarioDao ID = new InventarioDao();
     public VentanaInicio() {
+        
         initComponents();
         setTitle("_______Brillo Rosa_______");
         ImageIcon image = new ImageIcon("im.png");
         setIconImage(image.getImage());
         setLocationRelativeTo(null );
         Cargar_Tabla();
+        
+        
+        
+        CInicio cinicio = new CInicio(this, VM , VN , ID);
+        CNuevo cNuevo = new CNuevo(MI, ID, this, VN);
+        CModificar cModificar = new CModificar(ID, MI, VN, this, VM);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -32,8 +48,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         Btn_Nuevo = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Btn_Eliminar = new javax.swing.JButton();
+        Btn_Modificar = new javax.swing.JButton();
         Btn_Salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -99,18 +115,23 @@ public class VentanaInicio extends javax.swing.JFrame {
         Btn_Nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nuevo.png"))); // NOI18N
         Btn_Nuevo.setText("Nuevo");
         Btn_Nuevo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Btn_Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_NuevoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(213, 216, 220));
-        jButton3.setFont(new java.awt.Font("Myanmar Text", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar.png"))); // NOI18N
-        jButton3.setText("Eliminar");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Btn_Eliminar.setBackground(new java.awt.Color(213, 216, 220));
+        Btn_Eliminar.setFont(new java.awt.Font("Myanmar Text", 0, 14)); // NOI18N
+        Btn_Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar.png"))); // NOI18N
+        Btn_Eliminar.setText("Eliminar");
+        Btn_Eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton4.setBackground(new java.awt.Color(213, 216, 220));
-        jButton4.setFont(new java.awt.Font("Myanmar Text", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Modificar.png"))); // NOI18N
-        jButton4.setText("Modificar");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Btn_Modificar.setBackground(new java.awt.Color(213, 216, 220));
+        Btn_Modificar.setFont(new java.awt.Font("Myanmar Text", 0, 14)); // NOI18N
+        Btn_Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Modificar.png"))); // NOI18N
+        Btn_Modificar.setText("Modificar");
+        Btn_Modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         Btn_Salir.setBackground(new java.awt.Color(213, 216, 220));
         Btn_Salir.setFont(new java.awt.Font("Myanmar Text", 0, 14)); // NOI18N
@@ -128,8 +149,8 @@ public class VentanaInicio extends javax.swing.JFrame {
             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Btn_Nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Btn_Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Btn_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Btn_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -147,9 +168,9 @@ public class VentanaInicio extends javax.swing.JFrame {
                 .addGap(49, 49, 49)
                 .addComponent(Btn_Nuevo)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(Btn_Eliminar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(Btn_Modificar)
                 .addGap(18, 18, 18)
                 .addComponent(Btn_Salir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -176,6 +197,11 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void Btn_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_NuevoActionPerformed
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -211,12 +237,12 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Btn_Eliminar;
+    public javax.swing.JButton Btn_Modificar;
     public javax.swing.JButton Btn_Nuevo;
     public javax.swing.JButton Btn_Salir;
     public javax.swing.JTable Tabla;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -224,7 +250,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    private void Cargar_Tabla() {
+    public void Cargar_Tabla() {
         try {
             DefaultTableModel modelo = new DefaultTableModel();
             Tabla.setModel(modelo);
@@ -243,8 +269,8 @@ public class VentanaInicio extends javax.swing.JFrame {
             int cantidadColumnas = rsMd.getColumnCount();
             
             //Asignando nombre a las columnas
-            modelo.addColumn("Codigo");
-            modelo.addColumn("Nombre");
+            modelo.addColumn("Codigo");            modelo.addColumn("Nombre");
+
             modelo.addColumn("Marca");
             modelo.addColumn("Cantidad");
             modelo.addColumn("Precio");
@@ -264,4 +290,15 @@ public class VentanaInicio extends javax.swing.JFrame {
             System.out.println(ex.toString());
         }
     }
+    
+    public void Campos(int fila) {
+        
+        VM.LabelCod.setText(this.Tabla.getValueAt(fila, 0).toString());
+        VM.txtNombre_Modificar.setText(this.Tabla.getValueAt(fila, 1).toString());
+        VM.txtMarca_Modificar.setText(this.Tabla.getValueAt(fila, 2).toString());
+        VM.txtCantidad_Modificar.setText(this.Tabla.getValueAt(fila, 3).toString());
+        VM.txtPrecio_Modificar.setText(this.Tabla.getValueAt(fila, 4).toString());           
+    }
+    
 }
+
