@@ -3,6 +3,7 @@ package Vista;
 
 import javax.swing.ImageIcon;
 
+
 public class Login extends javax.swing.JFrame {
 
     public Login() {
@@ -10,6 +11,9 @@ public class Login extends javax.swing.JFrame {
         setTitle("_______Brillo Rosa_______");
         ImageIcon image = new ImageIcon("im.png");
         setIconImage(image.getImage());
+        setLocationRelativeTo(null );
+        
+        
     }
 
     @SuppressWarnings("unchecked")

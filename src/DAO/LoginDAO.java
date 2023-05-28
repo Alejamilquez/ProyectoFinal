@@ -21,7 +21,6 @@ public class LoginDAO {
         int a=0;
         String Us = new String(login.CampoUsuario.getText());
         String Pass = new String(login.CampoContraseña.getPassword());
-        System.out.println("us  "+ Us);
         
         if (Us.equals(Usuario) && Pass.equals(Contraseña)) {
             a=1;

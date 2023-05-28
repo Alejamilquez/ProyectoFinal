@@ -2,7 +2,6 @@
 package Principal;
 
 import Controlador.CLogin;
-import Controlador.CVInicio;
 import DAO.LoginDAO;
 import Modelo.Conexion;
 import Modelo.MLogin;
@@ -19,7 +18,15 @@ public class Main {
         Conexion e = new Conexion();
         VentanaInicio f = new VentanaInicio();
         
+        
         c.setVisible(true);
     }
-    
+ 
+
+    /*public static void main(String[] args) {
+        Login login = new Login();
+        
+        login.setVisible(true);
+    }
+    */
 }
